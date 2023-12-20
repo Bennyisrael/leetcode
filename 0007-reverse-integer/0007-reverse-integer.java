@@ -8,7 +8,7 @@ class Solution {
             int digit = n % 10;
 
             // Check for overflow before updating the sum
-            if (sum > maxDiv10 || (sum == maxDiv10)) {
+            if (sum > maxDiv10 || (sum == maxDiv10 && digit > 7)) {
                 return 0; // Overflow will occur
             }
 
