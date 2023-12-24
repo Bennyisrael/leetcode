@@ -1,8 +1,20 @@
 class Solution {
     public String reversePrefix(String words, char ch) {
-        String s = words.substring(0,words.indexOf(ch)+1);
-        StringBuilder str = new StringBuilder(s);
-        str.reverse();
-        return str.toString()+words.substring(words.indexOf(ch)+1);
+        char arr []=words.toCharArray();
+        int a=0,b=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==ch){
+                b=i;
+                while(a<b){
+                    char temp=arr[b];
+                    arr[b]=arr[a];
+                    arr[a]=temp;
+                    a++;
+                    b--;
+                }
+                break;
+            }
+        }
+        return new String(arr);
     }
 }
