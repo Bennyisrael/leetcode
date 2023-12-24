@@ -1,7 +1,13 @@
 class Solution {
     public void reverseString(char[] chars) {
-        StringBuilder reversed = new StringBuilder(new String(chars)).reverse();
-        char[] reversedChars = reversed.toString().toCharArray();
-        System.arraycopy(reversedChars, 0, chars, 0, reversedChars.length);
+         int i = 0;
+        int j = chars.length - 1;
+        while (i < j) {
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+            i++;
+            j--;
+        }
     }
 }
