@@ -1,25 +1,52 @@
-class Solution{
-public int getMaximumGold(int[][] grid) {
-    int maxGold = 0;
-    for (int i = 0; i < grid.length; i++) {
-        for (int j = 0; j < grid[0].length; j++) {
-            if (grid[i][j] != 0) {
-                maxGold = Math.max(maxGold, dfs(grid, i, j));
+class Solution {
+    int[] dr = new int[] {0, 0, 1, -1};
+    int[] dc = new int[] {-1, 1, 0, 0};
+    int max, m, n;
+    public void dfs(int i, int j, int[][] grid, boolean[][] visited, int val) {
+        visited[i][j] = true;
+        if(val > max) {max = val;}
+        for(int k=0;k<4;++k) {
+            int r = i + dr[k];
+            int c = j + dc[k];
+
+            if(r<0 || c<0 || r>=m || c>=n || visited[r][c] || grid[r][c] == 0)
+                continue;
+            
+            dfs(r, c, grid, visited, val + grid[r][c]);
         }
-    }}
-    return maxGold;
-}
-private int dfs(int[][] grid, int x, int y) {
-    if (x < 0 || grid.length - 1 < x || y < 0 || grid[0].length - 1 < y || grid[x][y] == 0) {
-        return 0;
+        visited[i][j] = false;
+
     }
-    int temp = grid[x][y];
-    grid[x][y] = 0;
-    int up = dfs(grid, x - 1, y);
-    int down = dfs(grid, x + 1, y);
-    int left = dfs(grid, x, y - 1);
-    int right = dfs(grid, x, y + 1);
-    grid[x][y] = temp;
-    return Math.max(Math.max(Math.max(left, right), up), down) + temp;
-}
+    public int getMaximumGold(int[][] grid) {
+        m = grid.length;
+        n = grid[0].length;
+        int sum = 0;
+        boolean flag = true;
+        for(int i=0;i<m;++i) {
+            for(int j=0;j<n;++j) {
+                if(grid[i][j] == 0) {
+                    flag = false;
+                    break;
+                }
+                sum += grid[i][j];
+            }
+            if(!flag)
+                break;
+        }
+
+        if(flag)
+            return sum;
+
+        boolean[][] visited = new boolean[m][n];
+
+        for(int i=0;i<m;++i) {
+            for(int j=0;j<n;++j) {
+                if(grid[i][j] > 0) {
+                    dfs(i, j, grid, visited, grid[i][j]);
+                }
+            }
+        }
+
+        return max;
+    }
 }
