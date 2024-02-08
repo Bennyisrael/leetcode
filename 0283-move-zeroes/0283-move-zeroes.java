@@ -10,8 +10,7 @@ class Solution {
         }
         for(int i=in;i<n;i++)
         arr[i]=0;
-        for(int i=0;i<n;i++)
-        nums[i]=arr[i];
-        
+        // for(int i=0;i<n;i++)
+        // nums[i]=arr[i];
     }
 }
