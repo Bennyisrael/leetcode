@@ -4,9 +4,7 @@ class Solution {
         int sum=0;
         for(int i=0;i<arr.length;i++){
            sum += arr[i];
-           if (sum > maxi) {
-                maxi = sum;
-            }
+            maxi = sum>maxi?sum:maxi;
             if (sum < 0) {
                 sum = 0;
             }
