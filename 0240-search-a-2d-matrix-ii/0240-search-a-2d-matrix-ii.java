@@ -6,10 +6,10 @@ class Solution {
         while(i>=0 && j<m-1){
             if(matrix[i][j]==target)
                 return true;
-            if(matrix[i][j]>target)
-                i--;
-            else
+            if(matrix[i][j]<target)
                 j++;
+            else
+                i--;
 
         }
         return false;
