@@ -8,8 +8,9 @@ class Solution {
         }
         if(str.indexOf(b)!=-1)
             return c;
+        else{
         str.append(a);
-        c++;
+        c++;}
         if(str.indexOf(b)!=-1)
             return c;
         return -1;
