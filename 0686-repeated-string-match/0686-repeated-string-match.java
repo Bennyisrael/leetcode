@@ -13,9 +13,6 @@ class Solution {
         c++;}
         if(str.indexOf(b)!=-1)
             return c;
-        else
-        return -1;
-
         return -1;
     }
 }
