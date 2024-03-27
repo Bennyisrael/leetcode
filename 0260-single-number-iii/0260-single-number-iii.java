@@ -15,6 +15,7 @@ class Solution {
         for(Map.Entry<Integer,Integer> ent : mp.entrySet()){
             if(ent.getValue()==1){
                 arr[i++]=ent.getKey();
+                if(i==2)break;
             }
         }
         return arr;
